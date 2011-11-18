@@ -1,0 +1,19 @@
+<web-app>
+
+    <servlet>
+        <servlet-name>appServlet</servlet-name> <!-- This name is entirely arbitrary -->
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>/WEB-INF/classes/applicationContext.xml</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>appServlet</servlet-name>
+        <url-pattern>/</url-pattern> <!-- Let the dispatcherServlet handle all requests from the root. If you have assets (like images) you may want to be a little more specific -->
+    </servlet-mapping>
+
+</web-app>
