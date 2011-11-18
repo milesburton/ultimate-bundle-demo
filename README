@@ -1,0 +1,50 @@
+Synopsis
+-------
+This micro-framework is aimed towards simple web-service based site. It is intended to remove all the crap of heavy weight frameworks
+and give you the tools you need. "...5 seconds to start Tomcat 7? I'll take two..."
+
+Introduction
+-------
+Frameworks are great arn't they? We've come so far these days, with less than two clicks we can instruct our favourite framework
+to build a brand new domain object. It'll use the most elegant AOP to create you a dynamic finder, hell it'll do almost anything.
+
+Yet here you are. You're thinking I need to build a simple application, No ORM, no obfuscated metaclassing. Maybe a RESTful service? Something lean and mean.
+Let's take raw Groovy, we're bored with all the Java noise. Spock, we need real tests and we need them fast. Spring?
+Spring has gained a bad rep over the years but it's seriously fast and intuitive, yup throw that in. Now for a
+something to tie it all together - gradle.
+
+This framework (actually, no. this is a nothing more than a guideline) brings together the best of Groovy, Java, Spring, Gradle and Spock.
+Quickly build a test-driven web-site without any noise or confusing abstractions. I have provided the very minimum of
+configuration to let you get developing without any impedance.
+
+Enjoy...
+
+Libraries
+-------
+* Java - Java rocks. Use Java to taste
+* Groovy - Functional development for men
+* Spock - Behavioral driven development for humans
+* Gradle - Build scripts without the pain (okay, okay... Less pain than Maven and Ant)
+
+
+Website
+-------
+
+http://www.milesburton.com/Ultimate_Web_Bundle_Spring_MVC3_Groovy_Spock_Gradle_Java
+
+License
+-------
+
+This library is free software; you can redistribute it and/or
+modify it under the terms of the GNU Lesser General Public
+License as published by the Free Software Foundation; either
+version 2.1 of the License, or (at your option) any later version.
+
+This library is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public
+License along with this library; if not, write to the Free Software
+Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
