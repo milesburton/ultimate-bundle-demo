@@ -1,7 +1,7 @@
 Synopsis
 -------
-This micro-framework is aimed towards simple web-service based site. It is intended to remove all the crap of heavy weight frameworks
-and give you the tools you need. "...5 seconds to start Tomcat 7? I'll take two..."
+This micro-framework is aimed towards simple web-service based sites. It is intended to remove all the crap of heavy weight frameworks
+and give you only the tools you need. "...5 seconds to start Tomcat 7? I'll take two..."
 
 Introduction
 -------
