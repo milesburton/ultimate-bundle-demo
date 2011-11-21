@@ -1,0 +1,92 @@
+/* Various funky plugins worth adding. See buildscript for additional information */
+apply plugin: 'groovy'
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'idea'
+apply plugin: 'eclipse'
+apply plugin: 'war'
+apply plugin: 'tomcat'
+
+group = 'com.milesburton.example'
+artifactId = 'ultimate-bundle-demo'
+version = '1.0.0-SNAPSHOT'
+
+// Declare global library version numbers
+springVersion = "3.0.5.RELEASE"
+tomcatVersion = "7.0.11"
+sourceCompatibility = 1.6
+
+/* Add any additional maven or ivy repos here */
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+/* What is required for our build script [this file] to run */
+buildscript {
+    repositories {
+        add(new org.apache.ivy.plugins.resolver.URLResolver()) {
+            name = 'GitHub'
+            addArtifactPattern 'http://cloud.github.com/downloads/[organisation]/[module]/[module]-[revision].[ext]'
+        }
+    }
+
+    dependencies {
+        classpath 'bmuschko:gradle-tomcat-plugin:0.8'
+        classpath 'bmuschko:gradle-cargo-plugin:0.3'
+    }
+}
+
+/* Define where our source files are and for what environemnt */
+sourceSets {
+    test {
+        groovy {
+            srcDir 'src/test/groovy/unit'
+            srcDir 'src/test/groovy/integration'
+            srcDir 'src/test/groovy/functional'
+        }
+
+        java {
+            srcDir 'src/test/java/unit'
+            srcDir 'src/test/java/integration'
+            srcDir 'src/test/java/functional'
+        }
+
+    }
+}
+
+/* Remind the inbuilt test script that our test classes are compiled here */
+sourceSets.test.classesDir = new File("./build/classes")
+
+// This defines which libraries we need to fetch before this project will build.
+dependencies {
+
+    compile "org.springframework:spring-webmvc:$springVersion"
+    groovy "org.codehaus.groovy:groovy-all:1.7.0"
+
+    testCompile "junit:junit:4.10"
+    testCompile "org.spockframework:spock-core:0.5-groovy-1.7" // BDD framework
+    testCompile "org.codehaus.geb:geb-core:0.6.1", "org.seleniumhq.selenium:selenium-firefox-driver:2.9.0", "org.seleniumhq.selenium:selenium-support:2.9.0"
+    testCompile "org.codehaus.geb:geb-spock:0.6.1"
+
+    tomcat "org.apache.tomcat.embed:tomcat-embed-core:$tomcatVersion",
+            "org.apache.tomcat.embed:tomcat-embed-logging-juli:$tomcatVersion"
+    tomcat("org.apache.tomcat.embed:tomcat-embed-jasper:$tomcatVersion") {
+        exclude group: 'org.eclipse.jdt.core.compiler', module: 'ecj'
+    }
+
+}
+
+/* The test script helpers */
+test {
+    systemProperties = {
+        System.properties /* pass the environment vars to the test script*/
+        geb.build.baseUrl = 'http://localhost8080/ultimate-bundle-demo/'
+    }
+
+    include 'com/milesburton/ultimate/**'
+
+    beforeTest { descriptor ->
+        logger.lifecycle("Running test: " + descriptor)
+    }
+}
