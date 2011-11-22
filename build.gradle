@@ -79,10 +79,7 @@ dependencies {
 
 /* The test script helpers */
 test {
-    systemProperties = {
         System.properties /* pass the environment vars to the test script*/
-        geb.build.baseUrl = 'http://localhost8080/ultimate-bundle-demo/'
-    }
 
     include 'com/milesburton/ultimate/**'
 
